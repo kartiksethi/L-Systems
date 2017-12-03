@@ -3,11 +3,11 @@
 An implementation of the famous [**L-Systems**](https://en.wikipedia.org/wiki/L-system) in OpenGL.
 
 A glimse of the ouput:
-![Image Night Scene](https://github.com/kartiksethi/L-Systems/images/blossoms.png)
+![Image Night Scene](/images/blossoms.png)
 
-![Image Sunset Scene](https://github.com/kartiksethi/L-Systems/images/rye.png)
+![Image Sunset Scene](/images/rye.png)
 
-![Evolution](https://github.com/kartiksethi/L-Systems/images/evo.png)
+![Evolution](/images/evo.png)
 
 Steps to get the code running:
 
