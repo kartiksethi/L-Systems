@@ -2,6 +2,13 @@
 
 An implementation of the famous [**L-Systems**](https://en.wikipedia.org/wiki/L-system) in OpenGL.
 
+A glimse of the ouput:
+![Image Night Scene](https://github.com/kartiksethi/L-Systems/images/blossoms.png)
+
+![Image Sunset Scene](https://github.com/kartiksethi/L-Systems/images/rye.png)
+
+![Evolution](https://github.com/kartiksethi/L-Systems/images/evo.png)
+
 Steps to get the code running:
 
 1. Install OpenGL, GLUT and GLM.
@@ -13,5 +20,7 @@ Steps to get the code running:
 4. Run the executable
 
 Refer to the HTML documentation in the 'documentation' folder to learn more about the project. Code documentation generated using doxygen can be found in 'html' folder.
+
+
 
 
