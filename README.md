@@ -2,7 +2,7 @@
 
 An implementation of the famous [**L-Systems**](https://en.wikipedia.org/wiki/L-system) in OpenGL.
 
-A glimse of the ouput:
+A glimpse of the ouput:
 ![Image Night Scene](/images/blossoms.png)
 
 ![Image Sunset Scene](/images/rye.png)
