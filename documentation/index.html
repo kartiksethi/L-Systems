@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>KAT Systems Mark 1</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                    
+                    <li>
+                        <a href="#intro">Introduction</a>
+                    </li>
+                    <li>
+                        <a href="#tidy">Line Drawing</a>
+                    </li>
+                    <li>
+                        <a href="#tidier">Circle Drawing</a>
+                    </li>                    
+					<li>
+                        <a href="#analysis">Analysis</a>
+                    </li>
+                    <li>
+                        <a href="#problems">Speedbreakers</a>
+                    </li>
+                    <li>
+                        <a href="#team">The Artists</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>KAT Studios</h1>
+                        <h2>Mark I</h2>
+                        <hr class="small">
+                        <span class="subheading">L-Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview">
+                    
+                        <h2 class="post-title" id="intro">
+                            <strong>Introduction</strong>
+                        </h2>
+                        <p class="post-subtitle" style="text-align:justify;">
+                            Smith in his paper titled Plants, fractals, and formal languages talks about the interpretation of strings generated using formal grammars to create plant drawings. In order to create these drawings, termed as graftals, a formal grammar is first defined. After defining this grammar, an initial axiom is defined which is the first string of the language defined by the grammar. Using the productions of the grammar, all the symbols in the axiom are replaced by the right hand sides of their respective productions. This replacement is done in parallel for all the symbols. The string thus generated is the second string of the language or is the second generation of the strings in the language. This procedure is repeated to generate further generations of strings. The parallel replacement of symbols earns formal languages of this sort the name, parallel rewriting grammar languages. These languages were introduced by Lindenmayer and are hence termed L-systems.
+                            <br><br>
+							After generating a string, we define meanings for each of the symbols of the string. These meanings include drawing shapes, changing directions etc. According to these meanings, the generated string is interpreted to create a drawing. Multiple drawings can ge generated using a single string by changing the meanings of the symbols. The interpretation starts at the first symbol and proceeds in a sequential manner i.e. the operation defined by the first symbol is carried out first and then the operation defined by the second symbol and so on. Thus, a string is “interpreted” as a drawing. 
+							<br><br>
+							The inherent repetition in the structure of the strings allows us to create structures which look similar when you zoom in or zoom out. This property is exploited by Smith to create plants and other interesting structures. In our work, we explore L-systems, various grammars, their interpretations and interesting sketches creating using these techniques.
+
+							For the purpose of drawing trees using L-systems, the mid-point algorithm for line drawing and the mid-point algorithm for circle drawing were implemented in C++. To display the results on screen, the OpenGL library was used, while the GLUT library was used to create the window to serve as a canvas.
+                        </p>
+                    
+                   
+                </div>
+                <hr>
+                <div class="post-preview">
+                   
+                        <h2 class="post-title" id="tidy">
+                            <strong>Midpoint Line Drawing Algorithm</strong>
+                        </h2>
+                    <p class="post-subtitle" style="text-align:justify;">
+                            This line-drawing algorithm uses the mid-point technique. Whenever a decision between two pixels to be lit is to be made, the position of the mid-point of the two points is checked with respect to the line. This tells us which point lies closer to the ideal line. The algorithm is an incremental one, and works on pure integer arithmetic, which is significantly faster than floating point arithmetic. <br><br>
+							A general version of this algorithm has been implemented that can draw lines with any slopes. Four different cases arise depending on whether the slope is positive of negative and whether the absolute value of the slope is greater than or less than 1. These are apart from the trivial cases of horizontal or vertical lines and lines with a slope of 1 or -1, which are handled separately. The exact method is as follows:<br><br>
+
+							<strong>Name</strong>: drawLine<br><br>
+
+							<strong>Input</strong>: The two end points of the line to be drawn: <x1, y1> and <x2, y2>, and a color c.<br><br>
+
+							<strong>Step 1</strong>: Handle trivial cases:-<br><br>
+
+							If the line described falls into one of the trivial cases, handle them separately and return.<br><br>
+
+							<strong>Step 2</strong>: Initialize variables:-<br><br>
+
+							Set a variable vertical as true if abs(y2 – y1) > abs(x2 – x1), else set it to false.<br>
+							Set A to y2 – y1 and B to x1 – x2.<br>
+							If vertical, exchange A and B. <br>
+							If B > 0, multiply both A and B with -1.<br>
+							Store the sign of the slope in sign.<br>
+							Set d to 2*A + (sign)B.<br>
+							Set del1 to 2*A.<br>
+							Set del2 to 2*A + (sign)2*B.<br>
+							If vertical, set <start_other, start> to the point which has a lower y coordinate and set end to the higher y coordinate. <br>Else, set <start, start_other> to the point which has a lower x coordinate and set end to the higher x coordinate.<br><br>
+
+							<strong>Step 3</strong>: Draw first point:-<br><br>
+
+							If vertical, draw a point at <start_other, start> with color c, else draw a point at <start, start_other> with color c.<br><br>
+
+							<strong>Step 4</strong>: Draw the rest of the line:-<br><br>
+
+							For i from start + 1 to end do:<br>
+								If sign*d > 0, increment start_other with (sign)1 and increment d with del2.<br>
+								If sign*d <= 0, increment d with del1.<br>
+								If vertical, draw a point at <start_other, start> with color c, else draw a point at <i, 	start_other> with color c.<br><br>
+
+							<strong>Step 5</strong>: End<br><br>					
+						
+                    
+                </div>
+                <hr>
+                <div class="post-preview">
+                   
+                        <h2 class="post-title" id="tidier">
+                            Midpoint Circle Drawing Algorithm
+                        </h2>
+                        <p class="post-subtitle" style="text-align:justify;">
+                            The mid-point circle-drawing algorithm has also been implemented. Similar to the line-drawing algorithm, it checks the position of the mid-point of two choices with respect to the ideal circle to make a decision. The algorithm is based purely on integer arithmetic and is incremental in nature. Unlike the line-drawing algorithm, the increments are based on second order differentials since the equation of a circle is quadratic in nature. <br><br>
+							The standard algorithm draws circles with their centers at the origin. To overcome, this limitation, a simple shift in the origin before drawing the circle is employed. The origin is shifted back to its original location after drawing to restore the state of the canvas. The method exploits the 8-way symmetry of a circle. Instead of drawing the entire circle in the algorithm body itself, only 1/8 of it is drawn. The rest of the circle is completed by reflecting the arc along the axes, origin and y = x and y = -x to get the complete figure. This reflection can be done point-by-point using the following method:<br><br>
+
+							<strong>Name</strong>: drawCirclePoint<br><br>
+
+							<strong>Input</strong> The point to be drawn <x, y> and the color c.<br><br>
+
+							<strong>Step 1</strong>: Draw all the reflected points<br><br>
+
+							Draw the following points with color c:<br>
+							<x, y><br>
+							<-x, y><br>
+							<x,-y><br>
+							<-x, -y><br>
+							<y, x><br>
+							<-y, x><br>
+							<y, -x><br>
+							<-y,-x><br><br>
+
+							<strong>Step 2</strong>: End<br><br>
+
+							The main algorithm body is as follows:<br><br>
+
+							<strong>Name</strong>: drawCircle<br><br>
+
+							<strong>Input</strong>: The center of the circle <x1, y1> and the radius r and color c.<br><br>
+
+							<strong>Step 1</strong>: Shift the origin:-<br><br>
+
+							Shift the origin to <x1, y1>.<br><br>
+
+							<strong>Step 2</strong>: Initialize variables:-<br><br>
+
+							Set  d to 1 – r.<br>
+							Set dE to 3.<br>
+							Set dSE to -2*r + 5<br>
+							Set X = 0<br>
+							Set Y = r<br><br>
+
+							<strong>Step 3</strong>: Draw the first point:-<br><br>
+
+							Call drawCirclePoint(0, r, c).<br><br>
+
+							<strong>Step 4</strong>: Draw the rest of the points:-<br><br>
+
+							While Y > X do:<br>
+								If d < 0 increment d by dE and increment dSE by 2.<br>
+								If d >= 0 increment d by dSE, increment dSE by 4 and decrement Y by 1.<br>
+								Increment dE by 2 and X by 1.<br>
+								Call drawCirclePoint(X, Y, c)<br><br>
+
+							<strong>Step 5</strong>: Restore the origin:-<br><br>
+
+							Set the origin to <-x1, -y1><br><br>
+
+							<strong>Step 6</strong>: End
+                   
+                    
+                </div>
+                <hr>
+                <div class="post-preview">
+                	<h2 class="post-title" id="analysis">
+                            Are the Powerpuff Girls good for Townsville?
+                        </h2>
+                        <p class="post-subtitle">
+                        	The artists at KAT Studios have created two modern masters. The first is titled La Blossoms de Naturale :
+                        	<img src="img/blossoms.jpg" align="left" width="683" height="384"> 
+                        	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        	The second is titled Patcher in the Rye :
+							<img src="img/rye.png" align="left" width="683" height="384"> 
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							We experimented with our vision of evolution, we call it Smithsonian Evolution :
+							<img src="img/evo.png" align="left" width="683" height="384"> 
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							We now analyze the beauty of our art in numbers, although beauty is in the eye of the beholder. The figures with blue lines analyse the time taken to draw shrubs and the figures with red lines analyse the time taken to draw trees.
+							<img src="img/genVStime_shrub.png" align="left"> 
+							<img src="img/genVStime_tree.png" align="left"> 
+							<img src="img/popVStime_shrub.png" align="left"> 
+							<img src="img/popVStime_tree.png" align="left"> 									
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br>
+							To hone our artistic skills, we experimented with many other grammars.
+							<img src="img/1.png" align="left" width="683" height="384"> 
+							<img src="img/2.png" align="left" width="683" height="384"> 
+							<img src="img/3.png" align="left" width="683" height="384"> 
+							<img src="img/4.png" align="left" width="683" height="384"> 
+							<img src="img/5.png" align="left" width="683" height="384"> 
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<br><br><br><br><br><br><br><br><br>
+                        </p>
+                </div>
+
+                <hr>
+                <div class="post-preview">
+                   
+                        <h2 class="post-title" id="problems">
+                            Speedbreakers Which Didn't Stop a Bugatti
+                        </h2>
+                        <p class="post-subtitle" style="text-align:justify;">
+                        	The unfamiliarity with OpenGL caused major issues while implementing the Canvas class. This was partially circumvented by segregating the drawing part (handled by the Canvas) and the displaying part (handled by OpenGL) as much as possible. Only the display function of the Canvas class interacts with OpenGL, where it uses OpenGL to display the points which the Canvas stores in an unordered map. In essence, the Canvas itself serves as a frame buffer. Apart from this, since OpenGL itself does not handle creation of windows, a helper library called GLUT had to be used for this purpose.
+                        	<br><br>
+							Secondly, since OpenGL and GLUT are C libraries, integrating them with the more advanced C++ caused a slight problem: The GLUT function glutDisplayFunc takes as a parameter a pointer to a function with no arguments which draws the points using the OpenGL API. OOP design patterns dictate that such a function should be a part of the Canvas class. However, since functions of a class cannot be passed into C functions, a work-around had to be implemented. The map, which should actually be a private variable of the class, had to be made public and a separate non-class function draw had to be written which uses a global pointer to a Canvas object to draw the points using the OpenGL API. The Canvas display function simply makes the global pointer to point to the current object.
+							<br><br>
+							Another major issue we faced was because of the environment we were using to build the project. The CMake builder didn’t allow us to use the in-built string class of C++. Hence, we had to resort to using C strings and had to rewrite major portions of the code to reflect these changes.
+                </p>
+            	</div>
+                <hr>
+        <center><h2 class="post-title" id="team">
+                            The Freemasons
+                        </h2></center>
+        <br>
+        <ul id="team">
+        	<div class="row">
+        	<div class="col-sm-4">
+                    <div class="team-member text-center">
+                       
+                        <h3>Aniketh Janardhan Reddy</h3>
+                        <h4>2014A7TS0096H</h4>
+                        <a href="mailto:anikethjr@gmail.com" target="_blank">anikethjr@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member text-center">
+                        
+                        <h3>Kartik Sethi</h3>
+                        <h4>2014A7PS0130H</h4>
+                        <a href="mailto:kartik1295@gmail.com" target="_blank">kartik1295@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member text-center">
+                        
+                        <h3>Tanmaya Shekhar Dabral</h3>
+                        <h4>2014A7PS0138H</h4>
+                        <a href="mailto:tanmayadabral@gmail.com" target="_blank">tanmayadabral@gmail.com</a>
+                    </div>
+                </div>
+                
+                
+                
+            </div>  
+            
+        </div>
+        </ul>
+    </footer> 
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
