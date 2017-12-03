@@ -3,6 +3,9 @@
 #include<bits/stdc++.h>
 #include "interpreter.h"
 
+/**
+* Class to draw a tree which we call a LongTree
+**/
 class LongTree {
 public:
     LongTree(Color &colorBranch, Color &colorFlower, int x, int y, Canvas &canvas, int alignment, int generations = 6) {
@@ -36,6 +39,9 @@ public:
     }
 };
 
+/**
+* Class to draw a shrub
+**/
 class Shrub {
 public:
     Shrub(Color &colorBranch, Color &colorFlower, int x, int y, Canvas &canvas, int alignment, int generations = 4) {
@@ -68,6 +74,9 @@ public:
 
 };
 
+/**
+* Class to draw a tree which we call a TreeD
+**/
 class TreeD {
 public:
     TreeD(Color &colorBranch, Color &colorFlower, int x, int y, Canvas &canvas, int generations = 5) {
@@ -99,6 +108,9 @@ public:
 
 };
 
+/**
+* Class to draw a bird in the scene
+**/
 class Bird {
 public:
     Bird(Color &bodycolor, Color &wingcolor, int x, int y, Canvas &canvas, int generations = 1) {
@@ -128,6 +140,9 @@ public:
     }
 };
 
+/**
+* Function that draws the night scenery
+**/
 void night() {
     // Night by KAT
     Canvas canvas(1368, 700);
@@ -173,6 +188,9 @@ void night() {
 
 }
 
+/**
+* Function that draws the sunset scenery
+**/
 void sunset() {
     //Sunset by KAT
     Canvas canvas(1368, 700);
@@ -235,6 +253,9 @@ void sunset() {
 
 }
 
+/**
+* Function that does some analysis
+**/
 void analysis() {
     Canvas canvas(1368, 700);
     Color brown(165, 42, 42);
@@ -294,6 +315,9 @@ void analysis() {
 
 }
 
+/**
+* Function that draws specific flowers based on variable treenum
+**/
 void flowerTree(int treenum) {
     Canvas canvas(1368, 700);
     Color brown(165, 42, 42);
