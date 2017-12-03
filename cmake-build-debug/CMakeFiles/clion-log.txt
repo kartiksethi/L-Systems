@@ -1,0 +1,4 @@
+/home/anikethjr/clion-2017.2.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -D CMAKE_CXX_COMPILER=/usr/bin/g++ -D CMAKE_C_COMPILER=/usr/bin/gcc -G "CodeBlocks - Unix Makefiles" /home/anikethjr/Graphics/LSystems
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/anikethjr/Graphics/LSystems/cmake-build-debug

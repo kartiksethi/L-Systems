@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/LSystems.dir/canvas.cpp.o CMakeFiles/LSystems.dir/cfg.cpp.o CMakeFiles/LSystems.dir/interpreter.cpp.o CMakeFiles/LSystems.dir/main.cpp.o  -o LSystems -Wl,-rpath,/usr/local/lib /usr/lib/x86_64-linux-gnu/libGLU.so /usr/lib/x86_64-linux-gnu/libGL.so /usr/local/lib/libglut.so /usr/lib/x86_64-linux-gnu/libXmu.so /usr/lib/x86_64-linux-gnu/libXi.so 
