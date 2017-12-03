@@ -1,4 +1,6 @@
-# LSystems
+# L-Systems
+
+An implementation of the famous [**L-Systems**](https://en.wikipedia.org/wiki/L-system) in OpenGL.
 
 Steps to get the code running:
 
@@ -11,3 +13,5 @@ Steps to get the code running:
 4. Run the executable
 
 Refer to the HTML documentation in the 'documentation' folder to learn more about the project. Code documentation generated using doxygen can be found in 'html' folder.
+
+
