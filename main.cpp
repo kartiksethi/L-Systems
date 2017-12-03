@@ -267,8 +267,6 @@ void analysis() {
     }
 
     // population vs time (generation - 6 for both of them)
-
-
     cout << "Population vs Time for LongTree\n";
     for (int i = 1; i <= 20; i++)
     {
@@ -381,6 +379,7 @@ using namespace std;
 
 int main() {
     srand(15);
+    // Change the funtion calls to generate multiple scenery or trees
     night();
 //    sunset();
 //    flowerTree(1);
